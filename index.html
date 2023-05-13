@@ -68,7 +68,7 @@
 		}
 
 		#countdown{
-			font-size: 90px;
+			font-size: 80px;
 			/* background-color: #003d57; */
 			padding: 1.4em;
 			box-sizing: border-box;
@@ -98,42 +98,49 @@ Food might end at some point but alcohol for sure won't! <br>
 	<head>
 		<title>Countdown Timer</title>
 		<script>
-			// Set the date we're counting down to
-			var countDownDate = new Date("May 16, 2023 16:00:00").getTime();
-	
-			// Update the count down every 1 second
+			// Set the date to countdown to (e.g. New Year's Eve)
+			var countDownDate = new Date("May 13, 2023 10:17:00").getTime();
+			
+			// Update the countdown every second
 			var x = setInterval(function() {
-	
-				// Get the current date and time
-				var now = new Date().getTime();
-	
-				// Find the distance between now and the count down date
-				var distance = countDownDate - now;
-	
-				// Calculate days, hours, minutes, and seconds remaining
-				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-	
-				// Output the result in an element with id="countdown"
-				document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-				+ minutes + "m " + seconds + "s ";
-	
-				// If the countdown is over, display a message
-				if (distance < 0) {
-					clearInterval(x);
-					document.getElementById("countdown").innerHTML = "EXPIRED";
-				}
+		
+			  // Get the current date and time
+			  var now = new Date().getTime();
+		
+			  // Calculate the time remaining
+			  var timeLeft = countDownDate - now;
+		
+			  // Calculate days, hours, minutes, and seconds
+			  var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+			  var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			  var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+			  var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+		
+			  // Display the countdown in the element with id="countdown"
+			  var countdownElement = document.getElementById("countdown");
+			  countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+		
+			  // If the countdown is over, display PARTY and start another countdown for 8 hours
+			  if (timeLeft < 0) {
+				clearInterval(x);
+				countdownElement.innerHTML = "PARTY IS ON";
+				var partyCountdown = setInterval(function() {
+				  var partyTimeLeft = 1 * 1 * 60 * 1000 - (-timeLeft);
+				  var partyHours = Math.floor((partyTimeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				  var partyMinutes = Math.floor((partyTimeLeft % (1000 * 60 * 60)) / (1000 * 60));
+				  var partySeconds = Math.floor((partyTimeLeft % (1000 * 60)) / 1000);
+				  //countdownElement.innerHTML = partyHours + "h " + partyMinutes + "m " + partySeconds + "s ";
+				  if (partyTimeLeft < 0) {
+					clearInterval(partyCountdown);
+					countdownElement.innerHTML = "PARTY IS OVER";
+				  }
+				}, 1000);
+			  }
 			}, 1000);
-		</script>
+		  </script>
 	</head>
 	<body>
-	
-		<h1></h1>
-	
-		<p></p>
-	
+
 		<b><div id="countdown"></div></b>
 	
 	</body>
