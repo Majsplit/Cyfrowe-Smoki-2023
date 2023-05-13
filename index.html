@@ -61,93 +61,89 @@
 			bottom: 0;
 			left: 0;
 			color: white;
-			line-height: 3em;
-			padding-right: 1em;
+			line-height: 4.5em;
+			padding-right: 2em;
 			text-align: right;
 			box-sizing: border-box;
 		}
 
 		#countdown{
 			font-size: 80px;
-			/* background-color: #003d57; */
-			padding: 1.4em;
-			box-sizing: border-box;
+			padding: 2em ;  
+			height: 6em;;
+			box-sizing: border-box; 
 		}
 		
 	</style>
 </head>
-<body>
-	<img src="title.png" style="width: 100vw; height: 54vw">
-    <section id="content">
-		<div class="inforows">
-			<h1>Date: <b>16 May</b></h1>
-			<h1>Time: <b>16:00 - 02:00</b></h1>
-			<h1>Location: <button onclick="window.location = `https://goo.gl/maps/vxML9RVN5AQHziAH9`">C.K. Browar</button></h1>
-		</div>
-	</section>
-	<section id="desc">
-		<p class="desc">
-			<b>&#10052; Frozen District &#10052;</b> invites <b>you</b> to post-Digital Dragons After Party.<br>
-If you haven't got your wristband yet, find one of the Frozen District's people and ask for one!
-Anyone who comes (apart from the great company!) will be able to try the local beer and taste traditional Polish cuisine.
-Food might end at some point but alcohol for sure won't! <br>
-<b>See you on Tuesday!</b>
-		</p>
-    </section>
-	
-	<head>
-		<title>Countdown Timer</title>
-		<script>
-			// Set the date to countdown to (e.g. New Year's Eve)
-			var countDownDate = new Date("May 13, 2023 10:17:00").getTime();
+
+	<body>
+		<img src="title.png" style="width: 100vw; height: 54vw">
+		<section id="content">
+			<div class="inforows">
+				<h1>Date: <b>16 May</b></h1>
+				<h1>Time: <b>16:00 - 02:00</b></h1>
+				<h1>Location: <button onclick="window.location = `https://goo.gl/maps/vxML9RVN5AQHziAH9`">C.K. Browar</button></h1>
+			</div>
+		</section>
+		<section id="desc">
+			<p class="desc">
+				<b>&#10052; Frozen District &#10052;</b> invites <b>you</b> to post-Digital Dragons After Party.<br>
+	If you haven't got your wristband yet, find one of the Frozen District's people and ask for one!
+	Anyone who comes (apart from the great company!) will be able to try the local beer and taste traditional Polish cuisine.
+	Food might end at some point but alcohol for sure won't! <br>
+	<b>See you on Tuesday!</b>
+			</p>
+		</section>
+		
+		<head>
+			<title>Countdown Timer</title>
+			<script>
+				// Set the date to countdown to (e.g. New Year's Eve)
+				var countDownDate = new Date("May 16, 2023 16:00:00").getTime();
+				
+				// Update the countdown every second
+				var x = setInterval(function() {
 			
-			// Update the countdown every second
-			var x = setInterval(function() {
-		
-			  // Get the current date and time
-			  var now = new Date().getTime();
-		
-			  // Calculate the time remaining
-			  var timeLeft = countDownDate - now;
-		
-			  // Calculate days, hours, minutes, and seconds
-			  var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-			  var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			  var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-			  var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-		
-			  // Display the countdown in the element with id="countdown"
-			  var countdownElement = document.getElementById("countdown");
-			  countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-		
-			  // If the countdown is over, display PARTY and start another countdown for 8 hours
-			  if (timeLeft < 0) {
-				clearInterval(x);
-				countdownElement.innerHTML = "PARTY IS ON";
-				var partyCountdown = setInterval(function() {
-				  var partyTimeLeft = 1 * 1 * 60 * 1000 - (-timeLeft);
-				  var partyHours = Math.floor((partyTimeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				  var partyMinutes = Math.floor((partyTimeLeft % (1000 * 60 * 60)) / (1000 * 60));
-				  var partySeconds = Math.floor((partyTimeLeft % (1000 * 60)) / 1000);
-				  //countdownElement.innerHTML = partyHours + "h " + partyMinutes + "m " + partySeconds + "s ";
-				  if (partyTimeLeft < 0) {
-					clearInterval(partyCountdown);
-					countdownElement.innerHTML = "PARTY IS OVER";
+				  // Get the current date and time
+				  var now = new Date().getTime();
+			
+				  // Calculate the time remaining
+				  var timeLeft = countDownDate - now;
+			
+				  // Calculate days, hours, minutes, and seconds
+				  var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+				  var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				  var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+				  var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+			
+				  // Display the countdown in the element with id="countdown"
+				  var countdownElement = document.getElementById("countdown");
+				  countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+			
+				  // If the countdown is over, display PARTY and start another countdown for 8 hours
+				  if (timeLeft < 0) {
+					clearInterval(x);
+					countdownElement.innerHTML = "PARTY IS ON";
+					var partyCountdown = setInterval(function() {
+					  var partyTimeLeft = 10 * 60 * 60 * 1000 - (-timeLeft);
+					  var partyHours = Math.floor((partyTimeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					  var partyMinutes = Math.floor((partyTimeLeft % (1000 * 60 * 60)) / (1000 * 60));
+					  var partySeconds = Math.floor((partyTimeLeft % (1000 * 60)) / 1000);
+					  //countdownElement.innerHTML = partyHours + "h " + partyMinutes + "m " + partySeconds + "s ";
+					  if (partyTimeLeft < 0) {
+						clearInterval(partyCountdown);
+						countdownElement.innerHTML = "PARTY IS OVER";
+					  }
+					}, 1000);
 				  }
 				}, 1000);
-			  }
-			}, 1000);
-		  </script>
-	</head>
-	<body>
-
-		<b><div id="countdown"></div></b>
-	
+			  </script>
+		</head>
+			<b><div id="countdown"></div></b>		
 	</body>
-	
-	
 	<footer>
-		® Frozen District 2023
+		<b>® Frozen District 2023</b>
 	</footer>
 
 
